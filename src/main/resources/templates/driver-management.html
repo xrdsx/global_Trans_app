@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Driver Management</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>Driver Management</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Birth Date</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Hourly Rate</th>
+            <th>Username</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="driver : ${drivers}">
+            <td th:text="${driver.firstName}"></td>
+            <td th:text="${driver.lastName}"></td>
+            <td th:text="${driver.birthDate}"></td>
+            <td th:text="${driver.email}"></td>
+            <td th:text="${driver.phoneNumber}"></td>
+            <td th:text="${driver.hourlyRate}"></td>
+            <td th:text="${driver.user.username}"></td>
+            <td>
+                <a th:href="@{/driver-management/edit/{id}(id=${driver.id})}" class="btn btn-primary btn-sm">Edit</a>
+                <a th:href="@{/driver-management/delete/{id}(id=${driver.id})}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/driver-management/add}" class="btn btn-primary">Add Driver</a>
+    <a th:href="@{/dashboard}" class="btn btn-secondary">Back to Dashboard</a>
+</div>
+</body>
+</html>
