@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate Billing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Wygeneruj rachunki</h1>
+
+    <form th:action="@{/generate-billing-report}" method="get">
+        <div class="mb-3">
+            <label for="driver" class="form-label">Kierowca:</label>
+            <select id="driver" name="driverId" class="form-select" required>
+                <option value="-1">All</option> <!-- Dodano opcję "All" z wartością -1 -->
+                <option th:each="driver : ${drivers}" th:value="${driver.id}" th:text="${driver.firstName}"></option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="dateFrom" class="form-label">Od:</label>
+            <input type="date" id="dateFrom" name="dateFrom" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="dateTo" class="form-label">Do:</label>
+            <input type="date" id="dateTo" name="dateTo" class="form-control" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Wygeneruj</button>
+    </form>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>
+</body>
+</html>

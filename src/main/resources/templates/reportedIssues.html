@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Reported Issues</title>
+  <!-- Add the Bootstrap 4.6.0 CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <h1>Reported Issues</h1>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Route</th>
+      <th>Driver</th>
+      <th>Vehicle Registration Number</th>
+      <th>Priority</th> <!-- New column for Priority -->
+      <th>Type</th> <!-- New column for Type -->
+      <th>Created At</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="issue : ${reportedIssues}">
+      <td th:text="${issue.id}"></td>
+      <td th:text="${issue.route.nameRoute}"></td> <!-- Access the Route's nameRoute property -->
+      <td th:text="${issue.driver.firstName} + ' ' + ${issue.driver.lastName}"></td> <!-- Access the Driver's firstName and lastName properties -->
+      <td th:text="${issue.vehicleRegistrationNumber}"></td>
+      <td th:text="${issue.priority}"></td> <!-- Display the Priority value -->
+      <td th:text="${issue.type}"></td> <!-- Display the Type value -->
+      <td th:text="${issue.createdAt}"></td>
+      <td><a th:href="@{/issue_details(id=${issue.id})}" class="btn btn-primary">Details</a></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Add the Bootstrap 4.6.0 JavaScript (optional, only if you need it) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+  <!-- Add any additional JavaScript code here -->
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Vehicle</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<div class="container">
+  <h1>Edit Vehicle</h1>
+  <form th:object="${vehicle}" th:action="@{/vehicle-management/edit}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <div class="form-group">
+      <label for="mark">Mark:</label>
+      <input type="text" th:field="*{mark}" class="form-control" id="mark" required />
+    </div>
+    <div class="form-group">
+      <label for="model">Model:</label>
+      <input type="text" th:field="*{model}" class="form-control" id="model" required />
+    </div>
+    <div class="form-group">
+      <label for="yearOfProduction">Year of Production:</label>
+      <input type="number" th:field="*{yearOfProduction}" class="form-control" id="yearOfProduction" required />
+    </div>
+    <div class="form-group">
+      <label for="vin">VIN:</label>
+      <input type="text" th:field="*{vin}" class="form-control" id="vin" required />
+    </div>
+    <div class="form-group">
+      <label for="registrationNumber">Registration Number:</label>
+      <input type="text" th:field="*{registrationNumber}" class="form-control" id="registrationNumber" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="/vehicle-management" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+</body>
+</html>

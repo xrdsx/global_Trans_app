@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Assigned Routes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style/asignedRoutes.css">
+</head>
+<body>
+<div class="container">
+  <h1 class="my-4">Assigned Routes</h1>
+  <table class="table table-responsive">
+    <thead>
+    <tr>
+      <th>Route Name</th>
+      <th>Date</th>
+      <th>Map URL</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="dayWork : ${dayWorks}">
+      <td th:text="${dayWork.getRoute().getNameRoute()}"></td>
+      <td th:text="${dayWork.getDate()}"></td>
+      <td>
+        <a th:href="@{${dayWork.getRoute().getMap_url()}}" target="_blank">View on Google Maps</a>
+      </td>
+      <td th:text="${dayWork.getStatus()}"></td>
+      <td class="action-buttons">
+        <!-- Jeśli status to "Nie rozpoczęto" -->
+        <div th:if="${dayWork.getStatus() == 'Nie rozpoczęto' and dayWork.getDate() == todayDate}">
+          <form action="/startRoute" method="POST" class="start-route-form">
+            <input type="hidden" name="routeId" th:value="${dayWork.getRoute().getId()}">
+            <input type="hidden" name="driverId" th:value="252">
+            <button type="submit" class="btn btn-primary start-route">Start Route</button>
+          </form>
+        </div>
+
+        <!-- Jeśli status to "W trakcie" -->
+        <div th:if="${dayWork.getStatus() == 'W trakcie'}">
+          <button class="btn btn-info">
+            <a href="tel:531680250" style="color:white;text-decoration:none;">Kontakt z centralą</a>
+          </button>
+          <a th:href="@{/reportIssueForDayWork(dayWorkId=${dayWork.id})}" class="btn btn-warning">Zgłoś usterkę</a>
+
+          <form action="/finishRoute" method="POST" class="finish-route-form">
+            <input type="hidden" name="routeId" th:value="${dayWork.getRoute().getId()}">
+            <input type="hidden" name="driverId" th:value="252">
+            <input type="hidden" name="dayWorkId" th:value="${dayWork.getId()}">
+            <button type="submit" class="btn btn-success finish-route">Zakończ trasę</button>
+          </form>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<!-- Bootstrap core JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+        integrity="sha384-a39r5d5+WNQmkjyHCFP+YvNSJY+Xzo6mcZ/vJiiEvDwfvI/gRdVi8lL+xU6AFeJ"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6IXwo8wO5w9L3pylKQusHnPTDf+xBnYIjMvCk+pwF8gtTREUVTdz6I"
+        crossorigin="anonymous"></script>
+<script>
+
+</script>
+</body>
+</html>

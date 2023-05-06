@@ -1,0 +1,30 @@
+.card {
+      margin-top: 20px;
+      border: 1px solid #d3d3d3;
+      border-radius: 5px;
+    }
+    .card-title {
+      font-size: 24px;
+    }
+    .card-subtitle {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .card-text {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    .priority-low {
+      color: black;
+      font-weight: bold;
+    }
+
+    .priority-medium {
+      color: yellow;
+      font-weight: bold;
+    }
+
+    .priority-high {
+      color: red;
+      font-weight: bold;
+    }

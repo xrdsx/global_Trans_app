@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Issue Details</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style\issue-details.css">
+</head>
+<body>
+<div class="container">
+  <h1>Issue Details</h1>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">ID: <span th:text="${issue.id}"></span></h5>
+      <h6 class="card-subtitle mb-2 text-muted">Description:</h6>
+      <p class="card-text font-weight-bold" th:text="${issue.description}"></p>
+      <p class="card-text">Driver: <span th:text="${issue.driver.firstName} + ' ' + ${issue.driver.lastName}"></span></p>
+      <p class="card-text">Driver Phone Number: <span th:text="${issue.driverPhoneNumber}"></span></p>
+      <p class="card-text">Vehicle Registration Number: <span th:text="${issue.vehicleRegistrationNumber}"></span></p>
+      <p class="card-text">Route: <span th:text="${issue.route.nameRoute}"></span></p>
+      <p class="card-text">Location: <span th:text="${issue.location}"></span></p>
+      <p class="card-text">Created At: <span th:text="${issue.createdAt}"></span></p>
+
+      <!-- Dropdown for User Type -->
+      <form th:action="@{/updateIssue}" method="post">
+        <input type="hidden" name="issueId" th:value="${issue.id}" />
+
+        <div class="form-group">
+          <label for="type">Type:</label>
+          <select id="type" name="type" class="form-control">
+            <option value="Vehicle" th:selected="${issue.type == 'Vehicle'}">Vehicle</option>
+            <option value="Route" th:selected="${issue.type == 'Route'}">Route</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="priority">Priority:</label>
+          <select id="priority" name="priority" class="form-control">
+            <option value="Low" th:selected="${issue.priority == 'Low'}" class="priority-low">Low</option>
+            <option value="Medium" th:selected="${issue.priority == 'Medium'}" class="priority-medium">Medium</option>
+            <option value="High" th:selected="${issue.priority == 'High'}" class="priority-high">High</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+</html>

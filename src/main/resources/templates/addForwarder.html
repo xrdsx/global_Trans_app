@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Forwarder</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h2>Add Forwarder</h2>
+      <form method="post" th:action="@{/forwarder-management/add}">
+        <div class="form-group">
+          <label for="firstName">First Name:</label>
+          <input type="text" class="form-control" id="firstName" name="firstName" required>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name:</label>
+          <input type="text" class="form-control" id="lastName" name="lastName" required>
+        </div>
+        <div class="form-group">
+          <label for="birthDate">Birth Date:</label>
+          <input type="date" class="form-control" id="birthDate" name="birthDate" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number:</label>
+          <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required>
+        </div>
+        <div class="form-group">
+          <label for="basicPayout">Basic Payout:</label>
+          <input type="number" class="form-control" id="basicPayout" name="basicPayout" required>
+        </div>
+        <div class="form-group">
+          <label for="workTime">Work Time:</label>
+          <input type="number" class="form-control" id="workTime" name="workTime" required>
+        </div>
+        <div class="form-group">
+          <label for="hourlyRate">Hourly Rate:</label>
+          <input type="number" class="form-control" id="hourlyRate" name="hourlyRate" required>
+        </div>
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" class="form-control" id="username" name="username" required>
+          <div class="text-danger" th:if="${usernameError}">
+            <span th:text="${usernameError}"></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -12,7 +12,6 @@ public class DayWork {
 
     private LocalDate date;
 
-
     @ManyToOne
     @JoinColumn(name = "route_id")
     private Route route;
@@ -21,15 +20,25 @@ public class DayWork {
     @JoinColumn(name = "driver_id")
     private Driver driver;
 
+    @ManyToOne
+    @JoinColumn(name = "vehicle_id")
+    private Vehicle vehicle;
+
+    @JoinColumn(name = "status")
+    private String status;
+
     public DayWork() {
         // konstruktor domyślny
     }
 
-    public DayWork(int id, LocalDate date, Route route, Driver driver) {
+    public DayWork(int id, LocalDate date, Route route, Driver driver, Vehicle vehicle,String status ) {
         this.id = id;
         this.date = date;
         this.route = route;
         this.driver = driver;
+        this.vehicle = vehicle;
+        this.status = status;
+
     }
 
     public int getId() {
@@ -62,5 +71,21 @@ public class DayWork {
 
     public void setDriver(Driver driver) {
         this.driver = driver;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

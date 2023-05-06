@@ -8,6 +8,18 @@ $(function() {
     }).show();
   });
 
+  $(document).ready(function() {
+    // Set filterDate to today's date
+    var filterDate = new Date().toISOString().substr(0, 10);
+    $('#filterDate').val(filterDate);
+
+    // Filter table by today's date
+    $('.daywork-row').hide();
+    $('.daywork-row').filter(function() {
+      return $(this).find('td:eq(1)').text() == filterDate;
+    }).show();
+  });
+
   // filter by driver
   $('#filterDriver').on('change', function() {
     var filterDriver = $(this).val();
@@ -61,4 +73,9 @@ $(function() {
     return num < 10 ? '0' + num : num;
   }
 
+$('#toggleRecordsBtn').on('click', function() {
+  $('.daywork-row').toggle();
 });
+
+});
+

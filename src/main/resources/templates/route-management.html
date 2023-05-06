@@ -37,6 +37,7 @@
       <th>ID</th>
       <th>Name</th>
       <th>Map URL</th>
+      <th>Kilometers</th>
       <th>Actions</th>
     </tr>
     </thead>
@@ -47,6 +48,7 @@
       <td>
         <a th:href="${route.map_url}" th:text="${route.map_url}" target="_blank"></a>
       </td>
+      <td th:text="${route.forwarder_km}"></td>
       <td>
         <a class="btn btn-primary" th:href="@{/route-management/edit/{id}(id=${route.id})}">Edit</a>
         <a class="btn btn-danger" th:href="@{/route-management/delete/{id}(id=${route.id})}">Delete</a>

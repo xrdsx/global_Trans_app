@@ -29,7 +29,7 @@ public class DriverController {
 
     @GetMapping
     public String driverList(Model model) {
-        List<Driver> drivers = driverRepository.findAll();
+        List<Driver> drivers = driverRepository.findAllByUser_Role(RoleType.DRIVER);
         model.addAttribute("drivers", drivers);
         return "driver-management";
     }

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
@@ -15,6 +16,11 @@
           <span class="input-group-text">Filter by date:</span>
         </div>
         <input type="date" class="form-control" id="filterDate" value="" />
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-12">
+        <button class="btn btn-primary" id="toggleRecordsBtn">Show/Hide Records</button>
       </div>
     </div>
     <div class="col-12 col-md-4 mb-2">
@@ -42,7 +48,7 @@
       <th>ID</th>
       <th>Date</th>
       <th>Driver</th>
-      <th>Route</th>
+      <th>Route</th><!-- Add a new column for Trailer -->
       <th>Actions</th>
     </tr>
     </thead>
@@ -52,13 +58,18 @@
       <td th:text="${dayWork.date}"></td>
       <td th:text="${dayWork.driver.firstName + ' ' + dayWork.driver.lastName}"></td>
       <td th:text="${dayWork.route.nameRoute}"></td>
+      <!-- Display Vehicle registration number and name -->
+
       <td>
+        <a class="btn btn-info" th:href="@{/daywork-management/detail/{id}(id=${dayWork.id})}">Details</a>
         <a class="btn btn-danger" th:href="@{/daywork-management/delete/{id}(id=${dayWork.id})}">Delete</a>
+
       </td>
     </tr>
     </tbody>
   </table>
   <a class="btn btn-success" href="/daywork-management/add">Add New DayWork</a>
+  <a class="btn btn-primary" th:href="@{/dashboard}">Back to Dashboard</a>
 </div>
 <!-- Add Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

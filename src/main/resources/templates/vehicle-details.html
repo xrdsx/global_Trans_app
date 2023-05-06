@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vehicle Details</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>Vehicle Details</h1>
+  <table class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Property</th>
+      <th scope="col">Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>ID:</td>
+      <td th:text="${vehicle.id}"></td>
+    </tr>
+    <tr>
+      <td>Mark:</td>
+      <td th:text="${vehicle.mark}"></td>
+    </tr>
+    <tr>
+      <td>Model:</td>
+      <td th:text="${vehicle.model}"></td>
+    </tr>
+    <tr>
+      <td>Year of Production:</td>
+      <td th:text="${vehicle.yearOfProduction}"></td>
+    </tr>
+    <tr>
+      <td>VIN:</td>
+      <td th:text="${vehicle.vin}"></td>
+    </tr>
+    <tr>
+      <td>Registration Number:</td>
+      <td th:text="${vehicle.registrationNumber}"></td>
+    </tr>
+    </tbody>
+  </table>
+  <a href="/vehicle-management" class="btn btn-primary">Back to Vehicle List</a>
+</div>
+</body>
+</html>

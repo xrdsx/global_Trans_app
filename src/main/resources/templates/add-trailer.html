@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Trailer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h1 class="my-4">Add Trailer</h1>
+  <form th:action="@{/trailer-management/add}" method="post">
+    <div class="form-group">
+      <label for="registrationNumber">Registration Number:</label>
+      <input type="text" class="form-control" id="registrationNumber" name="registrationNumber" required>
+    </div>
+    <div class="form-group">
+      <label for="model">Model:</label>
+      <input type="text" class="form-control" id="model" name="model" required>
+    </div>
+    <div class="form-group">
+      <label for="capacity">Capacity:</label>
+      <input type="number" class="form-control" id="capacity" name="capacity" required>
+    </div>
+    <div class="form-group">
+      <label for="yearOfProduction">Year of Production:</label>
+      <input type="number" class="form-control" id="yearOfProduction" name="yearOfProduction" required>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Add Trailer</button>
+    </div>
+  </form>
+</div>
+<!-- Bootstrap core JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+        integrity="sha384-a39r5d5+WNQmkjyHCFP+YvNSJY+Xzo6mcZ/vJiiEvDwfvI/gRdVi8lL+xU6AFeJ"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6IXwo8wO5w9L3pylKQusHnPTDf+xBnYIjMvCk+pwF8gtTREUVTdz6I"
+        crossorigin="anonymous"></script>
+</body>
+</html>

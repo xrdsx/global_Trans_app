@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Driver {
@@ -20,10 +21,14 @@ public class Driver {
     private String email;
     private String phoneNumber;
     private BigDecimal hourlyRate;
-
+    @JoinColumn(name = "basic_payout")
+    private BigDecimal basicPayout;
     @ManyToOne
     @JoinColumn(name = "user_fk")
     private User user;
+
+    @OneToMany(mappedBy = "driver")
+    private List<Route> routes;
 
     public Long getId() {
         return id;
@@ -87,5 +92,13 @@ public class Driver {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public BigDecimal getBasicPayout() {
+        return basicPayout;
+    }
+
+    public void setBasicPayout(BigDecimal basicPayout) {
+        this.basicPayout = basicPayout;
     }
 }

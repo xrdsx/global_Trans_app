@@ -1,0 +1,18 @@
+.action-buttons {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .action-buttons > * {
+      margin-bottom: 10px;
+    }
+
+    @media (min-width: 768px) {
+      .action-buttons {
+        flex-direction: row;
+      }
+
+      .action-buttons > * {
+        margin-right: 10px;
+        margin-bottom: 0;
+      }

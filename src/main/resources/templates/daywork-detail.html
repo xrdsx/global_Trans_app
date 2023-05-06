@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>DayWork Detail</title>
+  <!-- Add Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+  <h1>DayWork Detail</h1>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Date</th>
+      <th>Driver</th>
+      <th>Route</th>
+      <th>Vehicle Name</th> <!-- Add a new table header for Vehicle Name -->
+      <th>Registration Number</th> <!-- Add a new table header for Registration Number -->
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td th:text="${dayWork.id}"></td>
+      <td th:text="${dayWork.date}"></td>
+      <td th:text="${driver.firstName + ' ' + driver.lastName}"></td>
+      <td th:text="${route.nameRoute}"></td>
+      <td th:text="${vehicle.mark}"></td> <!-- Add a new table cell for Vehicle Name -->
+      <td th:text="${vehicle.registrationNumber}"></td> <!-- Add a new table cell for Registration Number -->
+    </tr>
+    </tbody>
+  </table>
+  <a class="btn btn-primary" th:href="@{/daywork-management}">Back to DayWork Management</a>
+</div>
+<!-- Add Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

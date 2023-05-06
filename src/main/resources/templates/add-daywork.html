@@ -6,10 +6,18 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+
 </head>
 <body>
 <div class="container mt-5">
   <h1>Add New DayWork</h1>
+  <div th:if="${totalKmAlert}" class="alert alert-warning" role="alert">
+    The total kilometers for this driver has exceeded 300.
+  </div>
+
+  <div th:if="${stopAssigningRoutes}" class="alert alert-danger" role="alert">
+    Stop assigning routes for this driver as the total kilometers has exceeded 380.
+  </div>
 
   <form th:action="@{/daywork-management/save}" th:object="${dayWork}" method="post">
     <div class="form-group">
@@ -35,6 +43,17 @@
       </select>
     </div>
 
+    <div class="form-group">
+      <label for="vehicle">Vehicle:</label>
+      <select th:field="*{vehicle.id}" class="form-control" id="vehicle">
+        <option th:each="vehicle : ${vehicles}"
+                th:value="${vehicle.id}"
+                th:text="${vehicle.mark + ' ' + vehicle.model}"></option>
+      </select>
+    </div>
+
+
+
     <button type="submit" class="btn btn-primary">Save</button>
   </form>
 </div>
@@ -48,5 +67,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+<script src="/js/test.js"></script>
 </body>
 </html>
